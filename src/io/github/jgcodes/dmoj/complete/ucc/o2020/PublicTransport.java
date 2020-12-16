@@ -12,20 +12,27 @@ import java.util.Queue;
 
 public class PublicTransport {
   public static void main(String[] args) {
-    Map<Integer, List<Integer>> adjList = new HashMap<>();
+    // this is our adjacency list
+    Map<Integer, List<Integer>> graph = new HashMap<>();
     int start = 0, end = 0;
     try (BufferedReader readIn = new BufferedReader(new InputStreamReader(System.in))) {
+      // read and parse first line, ignore number of nodes since we're using adjacency list
       String[] firstLine = readIn.readLine().split("\s+");
       start = Integer.parseInt(firstLine[1]);
       end = Integer.parseInt(firstLine[2]);
       final int len = Integer.parseInt(firstLine[3]);
 
       for (int i = 0; i < len; i++) {
+        // read and parse current edge
         String[] edge = readIn.readLine().split("\s+");
         final int a = Integer.parseInt(edge[0]), b = Integer.parseInt(edge[1]);
-        adjList.computeIfAbsent(a, k -> new ArrayList<>());
-        adjList.get(a).add(b);
-        adjList.computeIfAbsent(b, k -> new ArrayList<>());
+        // map node a to an empty list if it doesn't already have one
+        graph.computeIfAbsent(a, k -> new ArrayList<>());
+        // mark b as adjacent to a
+        graph.get(a).add(b);
+        // map node b to an empty list if it doesn't already have one
+        // this will prevent null pointer exceptions
+        graph.computeIfAbsent(b, k -> new ArrayList<>());
       }
     }
     catch (IOException e) {
@@ -36,7 +43,9 @@ public class PublicTransport {
       System.err.println("Test data botched");
       System.exit(1);
     }
-    int result = breadthFirst(adjList, start, end);
+    // perform BFS on the graph
+    int result = breadthFirst(graph, start, end);
+    // the method will return -1 if the end node is unreachable
     if (result < 0) {
       System.err.println("Goal unreachable");
       System.exit(3);
@@ -47,16 +56,21 @@ public class PublicTransport {
   }
 
   private static int breadthFirst(Map<Integer, List<Integer>> graph, int start, int end) {
+    // the BFS queue
     Queue<Integer> queue = new ArrayDeque<>();
+    // serves as both visited marker and backtrace
     Map<Integer, Integer> traceMap = new HashMap<>();
     // time optimization: if start and end are same, no need to change lines
     if (start == end) return 0;
 
+    // literally BFS
     queue.add(start);
+    // initialize the starting node and map to null
+    // this is used in the tracing subroutine later
     traceMap.put(start, null);
     while (!queue.isEmpty()) {
       int node = queue.remove();
-
+      //if this is the goal we can now backtrace
       if (node == end) {
         //backtrace through the map to find the path taken
         return traceDepth(traceMap, node);
@@ -74,9 +88,12 @@ public class PublicTransport {
   // backtraces through the "search tree" to find the length of the path
   private static int traceDepth(Map<Integer, Integer> traceMap, int goal) {
     int result = 0;
+    // using integer class here allows for null values
     Integer current = goal;
+    // trace back through the map until it's found
     for (; current != null; result++)
       current = traceMap.get(current);
+    // return the number of line changes which is number of nodes - 1
     return --result;
   }
 }
