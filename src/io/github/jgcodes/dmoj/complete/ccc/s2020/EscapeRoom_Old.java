@@ -1,4 +1,4 @@
-package io.github.jgcodes.dmoj.complete.ccc.j2020;
+package io.github.jgcodes.dmoj.complete.ccc.s2020;
 
 import java.io.*;
 import java.util.*;
@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 import static java.lang.Math.*;
 
-public class EscapeRoom {
+public class EscapeRoom_Old {
   private static int m, n;
   private static int[][] room;
   private static boolean[] visited = new boolean[1000005];
@@ -29,16 +29,16 @@ public class EscapeRoom {
   }
 
   private static List<Integer> findValidValues(int k) {
-    List<IntPair> result = new ArrayList<>();
+    List<OldIntPair> result = new ArrayList<>();
     for (int i = 2; i < sqrt(k); i++) {
       if (k % i == 0) {
-        result.add(new IntPair(i, k / i));
+        result.add(new OldIntPair(i, k / i));
         if (i != k / i)
-          result.add(new IntPair(k / i, i));
+          result.add(new OldIntPair(k / i, i));
       }
     }
-    result.add(new IntPair(1, k));
-    result.add(new IntPair(k, 1));
+    result.add(new OldIntPair(1, k));
+    result.add(new OldIntPair(k, 1));
 
     return result
       .stream().filter(pair -> pair.x <= m && pair.y <= n)
@@ -60,11 +60,11 @@ public class EscapeRoom {
     return flag;
   }
 }
-class IntPair {
+class OldIntPair {
   public final int x;
   public final int y;
 
-  IntPair(int x, int y) {
+  OldIntPair(int x, int y) {
     this.x = x;
     this.y = y;
   }
