@@ -1,4 +1,4 @@
-package io.github.jgcodes.dmoj.complete.ccc.s2020;
+package io.github.jgcodes.dmoj.ccc.s2020;
 
 import java.io.*;
 import java.util.*;

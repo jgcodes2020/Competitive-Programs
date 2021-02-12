@@ -1,4 +1,4 @@
-package io.github.jgcodes.dmoj.complete.ccc.j2019;
+package io.github.jgcodes.dmoj.ccc.j2019;
 
 import java.io.BufferedReader;
 import java.io.IOException;

@@ -1,4 +1,4 @@
-package io.github.jgcodes.dmoj.complete.ucc.o2020;
+package io.github.jgcodes.dmoj.ucc.o2020;
 
 import java.io.BufferedReader;
 import java.io.IOException;

@@ -1,4 +1,4 @@
-package io.github.jgcodes.dmoj.complete.wac;
+package io.github.jgcodes.dmoj.wac;
 
 import java.util.*;
 
