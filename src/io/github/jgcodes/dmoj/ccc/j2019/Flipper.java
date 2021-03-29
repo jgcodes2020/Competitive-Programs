@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
 public class Flipper {
   public static void main(String[] args) {
     // input
-    int[] grid = new int[] {1, 2, 3, 4};
+    int[] grid = new int[]{1, 2, 3, 4};
     char[] seq;
     try (BufferedReader readIn = new BufferedReader(new InputStreamReader(System.in))) {
       seq = readIn.readLine().toCharArray();

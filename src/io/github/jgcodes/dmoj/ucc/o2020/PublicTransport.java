@@ -34,12 +34,10 @@ public class PublicTransport {
         // this will prevent null pointer exceptions
         graph.computeIfAbsent(b, k -> new ArrayList<>());
       }
-    }
-    catch (IOException e) {
+    } catch (IOException e) {
       System.err.println("I/O error");
       System.exit(2);
-    }
-    catch (Exception e) {
+    } catch (Exception e) {
       System.err.println("Test data botched");
       System.exit(1);
     }
@@ -85,6 +83,7 @@ public class PublicTransport {
     // if the queue empties without finding the goal it's unreachable
     return -1;
   }
+
   // backtraces through the "search tree" to find the length of the path
   private static int traceDepth(Map<Integer, Integer> traceMap, int goal) {
     int result = 0;

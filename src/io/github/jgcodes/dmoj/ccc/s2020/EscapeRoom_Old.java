@@ -25,7 +25,7 @@ public class EscapeRoom_Old {
     } catch (IOException e) {
       throw new RuntimeException(e);
     }
-    System.out.println(depthFirst(room[0][0])? "yes":"no");
+    System.out.println(depthFirst(room[0][0])? "yes" : "no");
   }
 
   private static List<Integer> findValidValues(int k) {
@@ -45,6 +45,7 @@ public class EscapeRoom_Old {
       .map(pair -> room[pair.y - 1][pair.x - 1])
       .collect(Collectors.toUnmodifiableList());
   }
+
   private static boolean depthFirst(int start) {
     visited[start] = true;
 
@@ -60,6 +61,7 @@ public class EscapeRoom_Old {
     return flag;
   }
 }
+
 class OldIntPair {
   public final int x;
   public final int y;

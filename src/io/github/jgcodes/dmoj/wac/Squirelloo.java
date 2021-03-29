@@ -62,12 +62,15 @@ public class Squirelloo {
     }
   }
 
-  static int arrayListLimits(ArrayList<ArrayList<Integer>> maxmin, int limit, int subtractor, int high, int low, int mid) {
+  static int arrayListLimits(ArrayList<ArrayList<Integer>> maxmin, int limit, int subtractor, int high, int low,
+                             int mid) {
     // if within limit
-    if (Math.abs(subtractor - (maxmin.get(mid).get(0))) <= limit || Math.abs(subtractor - (maxmin.get(mid).get(1))) <= limit) {
+    if (Math.abs(subtractor - (maxmin.get(mid).get(0))) <= limit || Math.abs(subtractor - (maxmin.get(mid)
+      .get(1))) <= limit) {
       System.out.println(mid);
       // if next element exceeds limit
-      if (Math.abs(subtractor - maxmin.get(mid + 1).get(0)) > limit || Math.abs(subtractor - (maxmin.get(mid + 1).get(1))) > limit) {
+      if (Math.abs(subtractor - maxmin.get(mid + 1).get(0)) > limit || Math.abs(subtractor - (maxmin.get(mid + 1)
+        .get(1))) > limit) {
         return mid;
       }
       // if this is last element
@@ -79,7 +82,8 @@ public class Squirelloo {
 
     }
 //
-    if (Math.abs(subtractor - (maxmin.get(mid).get(0))) > limit || Math.abs(subtractor - (maxmin.get(mid).get(1))) > limit) {
+    if (Math.abs(subtractor - (maxmin.get(mid).get(0))) > limit || Math.abs(subtractor - (maxmin.get(mid)
+      .get(1))) > limit) {
       System.out.println(mid);
 
       if (mid == 0) {

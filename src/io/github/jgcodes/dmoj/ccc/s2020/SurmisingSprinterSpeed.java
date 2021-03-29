@@ -38,6 +38,7 @@ public class SurmisingSprinterSpeed {
     System.out.println(max);
   }
 }
+
 class Observation implements Comparable<Observation> {
   private final int time;
   private final int pos;
